@@ -1,0 +1,41 @@
+<p>user-product-list works!</p>
+<div class="table-responsive">
+    <table class="table mb-0"
+           *ngIf="products && products.length">
+      <thead>
+        <tr>
+          
+          <th>ProductId</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>ImageUrl</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          
+         
+          <td>{{ product.productId }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description}}</td>
+          <td>{{product.imageUrl}}</td>
+          <td>{{product.rating}}</td>
+          <div class="quantity-control">
+            <td>
+              <button >-</button>  <span>10 </span>  <button >+</button>
+            </td>
+            
+            </div>
+          
+          <td>
+            <button class="btn btn-outline-primary btn-sm" (click)="addproductToUser($event,product)" >
+              Add To cart
+            </button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,32 @@
+<p>user-list works!</p>
+<!-- <div class="container">
+    <li *ngFor="let i of users">
+        {{i.email}} <br>
+        {{i.password}}
+
+    </li>
+
+</div> -->
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of users">
+          <td>{{ product.userId }}</td>
+          <td>{{ product.email }}</td>
+          <td>{{ product.password }}</td>
+          <td>
+            <button class="btn btn-outline-primary btn-sm">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

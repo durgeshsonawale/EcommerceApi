@@ -1,0 +1,36 @@
+<div class="container">
+    <p>cart works!</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped mb-0" *ngIf="products && products.length">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Description</th>
+                    <th>Image URL</th>
+                    <th>Rating</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{ product.productId }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.imageUrl }}</td>
+                    <td>{{ product.rating }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <button class="btn btn-outline-primary btn-sm" (click)="onDelete($event, product)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" [routerLink]="['/order']">Purchase Order</button>
+        </div>
+    </div>
+</div>
