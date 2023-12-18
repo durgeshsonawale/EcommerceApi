@@ -1,0 +1,28 @@
+<div class="signup-modal">
+  <form class="signup-form" [formGroup]="myForm" (ngSubmit)="submit()">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" type="email" formControlName="email" name="email" required>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" type="password" formControlName="password" name="password" required>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Birthdate" formControlName="birthDate" name="birthdate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender" name="gender" required>
+        <mat-option *ngFor="let gender of genderOptions" [value]="gender">{{gender }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" >Sign Up</button>
+  </form>
+  
+
+</div>

@@ -1,10 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { UserService } from '../users/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLogin:boolean=false
+  id!:number;
+  
 
-  constructor() { }
+  constructor(private service:UserService) {
+    
+  
+  }
+
+  
+
+
+  
 }

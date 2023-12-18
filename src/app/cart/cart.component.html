@@ -1,5 +1,8 @@
+
+
+
 <div class="container">
-    <p>cart works!</p>
+    
     <div class="table-responsive">
         <table class="table table-bordered table-striped mb-0" *ngIf="products && products.length">
             <thead class="thead-dark">
@@ -10,6 +13,7 @@
                     <th>Rating</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -22,15 +26,30 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.quantity }}</td>
                     <td>
-                        <button class="btn btn-outline-primary btn-sm" (click)="onDelete($event, product)">
-                            Delete
-                        </button>
+                        <i class="fa fa-trash mb-1 text-danger" (click)="onDelete($event, product)">
+                        </i>
                     </td>
+                   
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <i *ngIf="!(product.quantity < 2)"class="fa fa-minus text-danger mr-2" (click)="decrease($event, product)"></i>
+                            <i *ngIf="product.quantity<2"class="fa fa-minus text-danger mr-2" ></i>
+                            <h4 class="text-grey mb-0">{{ product.quantity }}</h4>
+                            <i class="fa fa-plus text-success ml-2" (click)="increase($event, product)" ></i>
+                            
+                        </div>
+                        
+                    </td>
+
                 </tr>
             </tbody>
         </table>
+        <h1 *ngIf="products.length">Bill Generated: {{ price }}</h1>
         <div class="text-center mt-4">
-            <button class="btn btn-primary" [routerLink]="['/order']">Purchase Order</button>
+            <button [disabled]=" products.length<=0" class="btn btn-primary" (click)="purchase()">Purchase Order</button>
         </div>
     </div>
 </div>
+<!-- <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i> -->
+<!-- <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div> -->

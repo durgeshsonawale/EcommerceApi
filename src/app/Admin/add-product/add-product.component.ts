@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class AddProductComponent implements OnInit{
   productForm:any
+   localStorageKey = 'formDataKey'
   constructor(private fb:FormBuilder,private productService:ProductService,private router:Router){
 
   }
   ngOnInit(): void {
     this.productForm = this.fb.group({
+      id:[null],
       category: [null, Validators.required],
       
        price: ['', Validators.required],
@@ -25,15 +27,16 @@ export class AddProductComponent implements OnInit{
     });
   }
   listProducts=Object.values(Type);
-
+    
 
 
   onSubmit(){
     
     const formData = this.productForm.value;
-    this.productService.addProducts(formData).subscribe(a=> console.log('hii'))
+    localStorage.setItem(this.localStorageKey,JSON.stringify(formData));
+    this.productService.addProducts(formData).subscribe(a=> {console.log('hii');this.router.navigate(['productlist'])})
     console.log('data added succesfully')
-    this.router.navigate(['productlist'])
+    
 
 
 

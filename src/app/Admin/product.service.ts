@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Type } from '../models/Category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,20 @@ export class ProductService {
   getProducts():Observable<any>{
     return this.http.get(this.api)
   }
+  getProductById(id:any){
+    return this.http.get(`${this.api1}/${id}`)
+  }
   addProducts(product:any){
-    return this.http.post(this.api1,product)
+    return this.http.post(this.api1,product,{responseType:'text'})
   }
   deleteProduct(id:any){
-    return this.http.delete(`${this.api1}/${id}`);
+    return this.http.delete(`${this.api1}/${id}`,{responseType:'text'});
 
+  }
+  editProducts(product:any){
+    return this.http.put(this.api1,product,{responseType:'text'})
+  }
+  getByCategory(category:any):Observable<any>{
+    return this.http.get(`${this.api}/${category}`)
   }
 }

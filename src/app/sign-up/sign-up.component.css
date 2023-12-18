@@ -1,0 +1,25 @@
+/* signup.component.css */
+
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+
+  .signup-modal {
+    background-color: #000;
+    width:'400px',
+  }
+  
+  .example-full-width {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,20 @@
+/* Your component CSS file or styles.scss */
+/* Your component CSS file or styles.scss */
+.mat-cell .image-container {
+    width: 100px; /* Adjust this value to fit your required width */
+    height: 100px; /* Adjust this value to fit your required height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc; /* Optional: Add a border for visual distinction */
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
+  }
+  
+  .mat-cell .image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
+  }
+  

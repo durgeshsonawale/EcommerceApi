@@ -1,0 +1,17 @@
+/* Define the position and z-index for the overlay content */
+.overlay-content {
+   
+    top: 0px; /* Adjust the top position as needed */
+    right: 0px; /* Adjust the right position as needed */
+    z-index: 1; /* Adjust the z-index as needed */
+    
+  }
+  
+  #right {
+    float: right;
+    margin-left: 1000px;
+}
+.main-nav{
+    float:left;
+}
+  

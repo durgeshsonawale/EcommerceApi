@@ -1,0 +1,82 @@
+
+<div class="mat-elevation-z8">
+  <table mat-table matSort [dataSource]="datasource" class="mat-table" *ngIf="products && products.length">
+
+    <!-- Product ID Column -->
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Product ID </th>
+      <td mat-cell *matCellDef="let product"> {{ product.productId }} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let product"> {{ product.price }} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
+    </ng-container>
+
+    <!-- Available Quantity Column -->
+    <ng-container matColumnDef="availableQuant">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Available </th>
+      <td mat-cell *matCellDef="let product"> {{ product.availableQuant }} </td>
+    </ng-container>
+
+    <!-- Image URL Column -->
+    <ng-container matColumnDef="imageUrl">
+      <th mat-header-cell *matHeaderCellDef > ImageUrl </th>
+      <td mat-cell *matCellDef="let product">
+        <span *ngIf="product.showImage"><img class="center-block img-responsive"
+          [style.height.px]="150"
+          [style.margin.px]="2"
+          [src]="product.imageUrl"
+          [title]="product.productName"></span>
+      </td>
+    </ng-container>
+
+    <!-- Rating Column -->
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+      <td mat-cell *matCellDef="let product"> {{ product.rating }} </td>
+    </ng-container>
+
+    <!-- Show/Hide Image Column -->
+    <ng-container matColumnDef="showImage">
+      <th mat-header-cell *matHeaderCellDef > Show Image </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button color="primary" (click)="toggleImage(product)">
+          {{ product.showImage ? 'Hide' : 'Show' }} Image
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef > Edit </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button color="primary" [routerLink]="['/edit', product.productId]">Edit</button>
+      </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef > Delete </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button color="primary" (click)="onDelete($event, product)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Define the table header and row based on column definitions -->
+    <tr mat-header-row *matHeaderRowDef="['productId', 'price', 'description', 'availableQuant', 'imageUrl', 'rating', 'showImage', 'edit', 'delete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['productId', 'price', 'description', 'availableQuant', 'imageUrl', 'rating', 'showImage', 'edit', 'delete']"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<div class="text-center mt-4">
+  <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
+</div>
+

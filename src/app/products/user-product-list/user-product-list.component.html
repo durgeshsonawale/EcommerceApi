@@ -1,41 +1,57 @@
-<p>user-product-list works!</p>
-<div class="table-responsive">
-    <table class="table mb-0"
-           *ngIf="products && products.length">
-      <thead>
-        <tr>
-          
-          <th>ProductId</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>ImageUrl</th>
-          <th>Rating</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products">
-          
-         
-          <td>{{ product.productId }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.description}}</td>
-          <td>{{product.imageUrl}}</td>
-          <td>{{product.rating}}</td>
-          <div class="quantity-control">
-            <td>
-              <button >-</button>  <span>10 </span>  <button >+</button>
-            </td>
-            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <h1>Filter</h1>
+<select (change)="update($event)">
+    <option value="" disabled>Select category</option>
+    <option *ngFor="let value of listProducts" [value]="value">{{ value }}</option>
+  </select>
+  <br>
+  <div class="row no-gutters">
+    <div class="col-md-6 mb-6" *ngFor="let product of products">
+      <div class="card bg-light">
+        <div class="card-header">
+            {{ product.description }}
+        </div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src= "./assets/images/ecommerce.png" class="card-img" alt="Product Image">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Product ID: {{ product.productId }}</h5>
+              <p class="card-text">Description: {{ product.description }}</p>
+              <p class="card-text">Price: {{ product.price }}</p>
+              <p class="card-text">Rating: {{ product.rating }}</p>
+              <p class="card-text">Category: {{ product.category }}</p>
+              
+            <div>
+  
+              <div class="quantity-control">
+                <div class="d-flex align-items-center">
+                    <i *ngIf="!(product.quantity < 2)"class="fa fa-minus text-danger mr-2" (click)="decrease($event, product)"></i>
+                    <i *ngIf="product.quantity<2"class="fa fa-minus text-danger mr-2" ></i>
+                    <h4 class="text-grey mb-0">{{ product.quantity }}</h4>
+                    <i class="fa fa-plus text-success ml-2" (click)="increase($event, product)" ></i>
+                    
+                </div>
+              </div>
+              <button [disabled]="product.quantit > 0" class="btn btn-outline-primary btn-sm mt-2" (click)="addproductToUser($event, product, product.quantity)">
+                Add To Cart
+              </button>
             </div>
-          
-          <td>
-            <button class="btn btn-outline-primary btn-sm" (click)="addproductToUser($event,product)" >
-              Add To cart
-            </button>
-          </td>
-          
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  </div>
+  
+</body>
+</html>

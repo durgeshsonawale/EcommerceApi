@@ -1,0 +1,47 @@
+<form  [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row" >
+        <label for="productId" class="col-sm-2 col-form-label">Product ID</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productId" placeholder="Product ID"   formControlName="id" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="category" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10" >
+            <select class="form-control" id="category" name="category" formControlName="category">
+                <option value="" disabled>Select category</option>
+                <option *ngFor="let value of listProducts" [value]="value">{{ value }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="imageUrl" class="col-sm-2 col-form-label">Image URL</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="imageUrl" placeholder="Image URL" formControlName="imageUrl">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="rating" class="col-sm-2 col-form-label">Rating</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="rating" placeholder="Rating" formControlName="rating">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" [disabled] ="productForm.invalid" [disabled] class="btn btn-primary" >Submit</button>
+        </div>
+    </div>
+</form>
+

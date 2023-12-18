@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { AuthService } from './login/auth.service';
+import { AdminNavComponent } from './Admin/admin-nav/admin-nav.component';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,18 @@ import { AuthService } from './login/auth.service';
 })
 export class AppComponent {
   title = 'Ecommerce-Project';
-  isLogin!:boolean
+  isLogin1=false;
+   role='';
+  
   constructor(private service: AuthService,private cdr: ChangeDetectorRef){}
-  ngOnInit(): void {
-    this.isLogin=this.service.isLogin;
+  // ngOnInit(): void {
+  //   this.isLogin=this.service.isLogin;
+  // }
+  setValue(event:any){
+
+    this.role=event.role
+    this.isLogin1=event.isLogin
+
   }
   
 }
