@@ -15,11 +15,10 @@ export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Get the JWT token from wherever you've stored it (e.g., localStorage)
     const jwtToken = localStorage.getItem('token');
-    console.log(jwtToken+"hhhhhhhhhhhhhhhh")
+    
 
-    // Clone the request and add the Authorization header with the JWT token
     if (jwtToken) {
-        console.log(`Bearer ${jwtToken}`)
+        console.log(`Bearer ${jwtToken}`+' durgesh')
       request = request.clone({
         setHeaders: {
           authorization: `Bearer ${jwtToken}`
@@ -30,7 +29,7 @@ export class JwtInterceptor implements HttpInterceptor {
     
     
 
-    // Pass the modified request to the next handler
+    
     return next.handle(request).pipe(
         catchError((err) => {
             if(err){

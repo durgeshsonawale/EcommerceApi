@@ -17,6 +17,7 @@ export class OrderListComponent {
   status=['Ordered','Dispatched','Delivered']
   orderColumnList=["orderId","userId","email","prize","time","status"]
   datasource:any;
+defaultSelectedValue: any;
   constructor(private service:OrderService){
     
   }
@@ -35,7 +36,7 @@ export class OrderListComponent {
   }
 
   onSelectChange(event :any,order:any){
-    this.service.setOrderStatus(order.orderId,event.target.value).subscribe(a=>console.log("order status updated"))
+    this.service.setOrderStatus(order.orderId,event.target.value).subscribe(a=>{console.log("order status updated");})
   }
 
 }

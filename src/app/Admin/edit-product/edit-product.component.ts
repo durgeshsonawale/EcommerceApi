@@ -12,7 +12,9 @@ import { ProductService } from '../product.service';
 export class EditProductComponent {
   productId:any
   productForm:any
-  listProducts=Object.values(Type);
+  listProducts = Object.keys(Type).filter(key => !isNaN(Number((Type as any)[key])));
+
+
   productDetail:any
   constructor(private fb:FormBuilder,private router:Router,private service:ProductService,private route:ActivatedRoute){}
 
@@ -65,7 +67,7 @@ export class EditProductComponent {
       
   }
   toggleImage(){
-
+    
   }
 
 }

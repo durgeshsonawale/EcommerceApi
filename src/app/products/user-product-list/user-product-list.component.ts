@@ -17,7 +17,7 @@ import { CartService } from 'src/app/cart.service';
 })
 export class UserProductListComponent {
   visited=false;
-  listProducts=Object.values(Type)
+  listProducts=Object.keys(Type).filter(key => !isNaN(Number((Type as any)[key])));
   num:any
 
   products!: any[];
@@ -25,7 +25,7 @@ export class UserProductListComponent {
 
   }
   ngOnInit(): void {
-    localStorage.clear();
+    //localStorage.clear();
     this.service.getProducts().subscribe(a=> this.products=a)
   }
   addproductToUser(event:Event,product:any,quant:any){

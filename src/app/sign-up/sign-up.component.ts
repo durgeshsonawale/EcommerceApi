@@ -55,5 +55,8 @@ export class SignUpComponent implements OnInit{
 
     // Perform actions like sending form data to a server, etc.
   }
+  closeDialog(){
+    this.dialogRef.close()
+  }
 
 }

@@ -1,25 +1,36 @@
-<div *ngIf="!isLogin1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div *ngIf="!isLogin1">
   
 
 
-  <app-login (myEvent)="setValue($event)"></app-login>
+    <app-login (myEvent)="setValue($event)"></app-login>
+  
+  
+  </div>
+  
+  
+  
+  <div *ngIf="role==='user'">
+  <app-nav-bar></app-nav-bar>
+  
+  </div>
+  <div *ngIf="role==='admin'">
+  <app-admin-nav></app-admin-nav>
+  <div class="container mt-4">
+    <router-outlet></router-outlet>
+  </div>
+  </div>
+  <div *ngIf="role==='unauthorized'"><app-login (myEvent)="setValue($event)"></app-login></div>
+</body>
+</html>
 
-
-</div>
-
-
-
-<div *ngIf="role==='user'">
-<app-nav-bar></app-nav-bar>
-
-</div>
-<div *ngIf="role==='admin'">
-<app-admin-nav></app-admin-nav>
-<div class="container mt-4">
-  <router-outlet></router-outlet>
-</div>
-</div>
-<div *ngIf="role==='unauthorized'"><app-login (myEvent)="setValue($event)"></app-login></div>
 <!-- <div class="container mt-4">
   <router-outlet></router-outlet>
 </div> -->

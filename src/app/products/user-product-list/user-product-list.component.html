@@ -6,43 +6,48 @@
     <title>Document</title>
     
 </head>
-<body><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <h1>Filter</h1>
-<select (change)="update($event)">
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <h1>Filter</h1>
+  <select (change)="update($event)">
     <option value="" disabled>Select category</option>
     <option *ngFor="let value of listProducts" [value]="value">{{ value }}</option>
   </select>
-  <br>
+  <hr>
   <div class="row no-gutters">
-    <div class="col-md-6 mb-6" *ngFor="let product of products">
-      <div class="card bg-light">
+    <div class="col-md-6 mb-4" *ngFor="let product of products" style="margin-bottom: 20px;">
+      <div class="card bg-dark">
         <div class="card-header">
-            {{ product.description }}
+          {{ product.description |uppercase}}
         </div>
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src= "./assets/images/ecommerce.png" class="card-img" alt="Product Image">
+        <div class="row no-gutters" >
+          <div class="col-md-4" >
+            <img style="padding-left: 10px;" src="./assets/images/ecommerce.png" class="card-img" alt="Product Image">
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Product ID: {{ product.productId }}</h5>
               <p class="card-text">Description: {{ product.description }}</p>
-              <p class="card-text">Price: {{ product.price }}</p>
+              <p class="card-text">Price: {{ product.price | currency:'INR' }}</p>
               <p class="card-text">Rating: {{ product.rating }}</p>
               <p class="card-text">Category: {{ product.category }}</p>
-              
-            <div>
-  
+
               <div class="quantity-control">
-                <div class="d-flex align-items-center">
-                    <i *ngIf="!(product.quantity < 2)"class="fa fa-minus text-danger mr-2" (click)="decrease($event, product)"></i>
-                    <i *ngIf="product.quantity<2"class="fa fa-minus text-danger mr-2" ></i>
-                    <h4 class="text-grey mb-0">{{ product.quantity }}</h4>
-                    <i class="fa fa-plus text-success ml-2" (click)="increase($event, product)" ></i>
-                    
+                <div class="quantity-control d-flex align-items-center">
+                  <button [disabled]="product.quantity <2" class="btn btn-sm btn-danger" (click)="decrease($event, product)">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <h4 class="text-grey mb-0 mx-2">{{ product.quantity }}</h4>
+                  <button class="btn btn-sm btn-success" (click)="increase($event, product)">
+                    <i class="fa fa-plus"></i>
+                  </button>
                 </div>
+                
               </div>
-              <button [disabled]="product.quantit > 0" class="btn btn-outline-primary btn-sm mt-2" (click)="addproductToUser($event, product, product.quantity)">
+              <button [disabled]="product.quantit < 1" class="btn btn-outline-primary btn-sm mt-2"
+                (click)="addproductToUser($event, product, product.quantity)">
                 Add To Cart
               </button>
             </div>
@@ -51,7 +56,6 @@
       </div>
     </div>
   </div>
-  </div>
-  
 </body>
+
 </html>

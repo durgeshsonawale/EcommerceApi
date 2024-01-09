@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { AuthService } from './login/auth.service';
 import { AdminNavComponent } from './Admin/admin-nav/admin-nav.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,6 @@ export class AppComponent {
   //   this.isLogin=this.service.isLogin;
   // }
   setValue(event:any){
-
     this.role=event.role
     this.isLogin1=event.isLogin
 

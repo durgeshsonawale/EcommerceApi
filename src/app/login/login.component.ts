@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WelcomeComponent } from '../home/welcome.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -80,11 +81,15 @@ export class LoginComponent implements OnInit{
         }
         else{
           const a={
+            
             role:'unauthorized',
             isLogin:true
     
     
           }
+          console.log("user galat hai !!")
+          Swal.fire("invalid");
+          
           
           this.myEvent.emit(a);
 

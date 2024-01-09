@@ -13,10 +13,12 @@ export class ProfileComponent implements OnInit{
   user!:any
   constructor(private service: OrderService , private authService:AuthService,private userService:UserService){}
   ngOnInit(): void {
-    this.userService.getById(this.authService.id).subscribe(a=> this.user=a);
+    this.userService.getById(this.authService.id).subscribe(a=> this.user=a.email);
     
   }
-  
+  logout(){
+    localStorage.clear();
+  }
 
 
 
